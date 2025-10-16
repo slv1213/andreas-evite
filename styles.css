@@ -2,9 +2,20 @@
    Holiday Evite (Free, GitHub Pages-ready)
    ============================== */
 :root{
+  /* Palette presets — pick one set by uncommenting, or keep the default */
+  /* Default Candy Cane */
   --candy-white: #ffffff;
-  --candy-red: #e11d48;       /* crimson pinkish red */
-  --candy-green: #0f766e;     /* deep teal green */
+  --candy-red: #e11d48;
+  --candy-green: #0f766e;
+  /* Silver & Gold (optional)
+  --candy-red: #b08900;
+  --candy-green: #6b7280;
+  */
+  /* Evergreen & Cranberry (optional)
+  --candy-red: #8b1d2c;
+  --candy-green: #0b3d2e;
+  */
+
   --silver-1: #d9d9d9;
   --silver-2: #f5f5f5;
   --silver-3: #c0c0c0;
@@ -19,7 +30,6 @@ html, body { height: 100%; margin: 0; }
 body{
   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--ink);
-  /* Candy-cane diagonal wallpaper */
   background:
     repeating-linear-gradient(45deg,
       #fff 0 16px,
@@ -32,7 +42,6 @@ body{
   overflow-x: hidden;
 }
 
-/* subtle frosted overlay behind cards */
 .front-wrapper::before,
 .back-wrapper::before{
   content:"";
@@ -42,7 +51,6 @@ body{
   pointer-events: none;
 }
 
-/* Layout wrappers */
 .front-wrapper,
 .back-wrapper{
   display: grid;
@@ -61,7 +69,6 @@ body{
   z-index: 1;
 }
 
-/* FRONT */
 .front-card .tree{
   font-size: clamp(64px, 12vw, 120px);
   text-align: center;
@@ -97,17 +104,13 @@ body{
   font-size: 14px;
 }
 
-/* BACK */
 .back-card h3{
   margin: 1.1rem 0 .35rem;
   color: var(--candy-red);
   font-size: clamp(18px, 2.4vw, 22px);
 }
 .poem p{ margin: .3rem 0; }
-.poem .closing{
-  margin-top: .8rem;
-  font-weight: 600;
-}
+.poem .closing{ margin-top: .8rem; font-weight: 600; }
 .actions{
   display: flex;
   gap: .6rem;
@@ -129,7 +132,6 @@ body{
 .btn:hover{ filter: brightness(1.05); }
 .btn:active{ transform: translateY(1px); }
 
-/* CURTAINS */
 .curtains{
   position: fixed;
   inset: 0;
@@ -165,7 +167,6 @@ body{
 .panel.left{ left: 0; transform: translateX(0); border-right: 1px solid rgba(0,0,0,.25); }
 .panel.right{ right: 0; transform: translateX(0); border-left: 1px solid rgba(0,0,0,.25); }
 
-/* Open button */
 .open-btn{
   position: relative;
   z-index: 3;
@@ -180,17 +181,14 @@ body{
 }
 .open-btn:focus{ outline: 3px solid rgba(190,18,60,.35); outline-offset: 4px; }
 
-/* When open */
 body.open .panel.left{ transform: translateX(-100%); transition: transform .9s cubic-bezier(.65,0,.35,1); }
 body.open .panel.right{ transform: translateX(100%); transition: transform .9s cubic-bezier(.65,0,.35,1); }
 body.open .open-btn{ opacity: 0; pointer-events: none; transition: opacity .3s ease .5s; }
 body.open .front-card{ opacity: 0; filter: blur(3px); transition: opacity .4s ease .2s, filter .4s ease .2s; }
 body.open .back-wrapper{ opacity: 1; pointer-events: auto; transition: opacity .3s ease .7s; }
 
-/* Initially hide back until open */
 .back-wrapper{ opacity: 0; pointer-events: none; transition: opacity .2s ease; }
 
-/* SNOW */
 #snow{ position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 .snowflake{
   position: absolute;
@@ -201,26 +199,14 @@ body.open .back-wrapper{ opacity: 1; pointer-events: auto; transition: opacity .
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-@keyframes fall{
-  to{ transform: translateY(110vh); }
-}
+@keyframes fall{ to{ transform: translateY(110vh); } }
 @keyframes sway{
   0%{ margin-left: 0; }
   50%{ margin-left: 18px; }
   100%{ margin-left: 0; }
 }
 
-/* Responsive trims */
 @media (max-width: 520px){
   .btn{ font-size: 14px; }
   .details .line{ font-size: 15px; }
-}
-
-/* No-JS fallback */
-noscript{
-  position: fixed; inset: 0;
-  display: grid; place-items: center;
-  background: #fff;
-  z-index: 9999;
-  padding: 20px;
 }

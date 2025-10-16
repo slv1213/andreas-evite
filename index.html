@@ -4,27 +4,35 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Holiday Cheer is Almost Here! ✨</title>
+
+  <!-- Basic SEO / Link Preview -->
+  <meta name="description" content="Join us for food, fun, awards & a white elephant gift exchange — Friday, Dec 12, 2025 at Texas de Brazil. Tap to open!">
+  <meta property="og:title" content="Holiday Cheer is Almost Here! ✨">
+  <meta property="og:description" content="Food, fun, awards & a white elephant gift exchange — Dec 12, 2025 · 12:30–3:30 PM · Texas de Brazil">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://slv1213.github.io/andreas-evite/">
+  <meta property="og:image" content="https://slv1213.github.io/andreas-evite/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0f766e">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Snowflakes container (populated by JS) -->
+  <noscript>This invitation uses a tiny bit of JavaScript for the curtain effect. Please enable JavaScript to view it.</noscript>
+
   <div id="snow"></div>
 
-  <!-- Curtains (initially closed). Add class 'open' on <body> to open -->
+  <!-- Curtains -->
   <div class="curtains">
-    <div class="panel left">
-      <div class="sheen"></div>
-    </div>
-    <div class="panel right">
-      <div class="sheen"></div>
-    </div>
+    <div class="panel left"><div class="sheen"></div></div>
+    <div class="panel right"><div class="sheen"></div></div>
     <button id="openBtn" aria-label="Open invitation" class="open-btn">Tap to Open</button>
   </div>
 
-  <!-- FRONT CARD (visible before opening) -->
+  <!-- FRONT CARD -->
   <main class="front-wrapper">
     <section class="card front-card" role="region" aria-label="Invitation cover">
       <div class="tree" aria-hidden="true">🎄</div>
@@ -43,7 +51,7 @@
     </section>
   </main>
 
-  <!-- BACK CONTENT (revealed after opening) -->
+  <!-- BACK CONTENT (poem + actions) -->
   <section class="back-wrapper" aria-live="polite">
     <article class="card back-card" role="article" aria-label="Invitation poem and details">
       <h2 class="script">Holiday Cheer is Almost Here!</h2>
@@ -70,8 +78,8 @@
       </div>
 
       <div class="actions">
-        <!-- Replace the href with your RSVP link or leave as mailto -->
-        <a class="btn" href="mailto:?subject=RSVP%20-%20Holiday%20Cheer%20Party&body=I%27ll%20be%20there!">RSVP</a>
+        <!-- STEP: Replace YOUR_GOOGLE_FORM_LINK with your real Google Form URL -->
+	<a class="btn" id="rsvpBtn" href="https://forms.gle/sT2nvjCYpWNkhK1H7" target="_blank" rel="noopener">RSVP</a>
         <button class="btn" id="closeBtn" aria-label="Close poem and show front">Close</button>
       </div>
     </article>
