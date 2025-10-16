@@ -1,89 +1,248 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Holiday Cheer is Almost Here! ✨</title>
+/* ==============================
+   Holiday Evite - Styles
+   ============================== */
 
-  <!-- SEO / Share Preview -->
-  <meta name="description" content="Join us for food, fun, awards & a white elephant gift exchange — Friday, Dec 12, 2025 at Texas de Brazil. Tap to open!">
-  <meta property="og:title" content="Holiday Cheer is Almost Here! ✨">
-  <meta property="og:description" content="Food, fun, awards & a white elephant gift exchange — Dec 12, 2025 · 12:30–3:30 PM · Texas de Brazil">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://slv1213.github.io/andreas-evite/">
-  <meta property="og:image" content="https://slv1213.github.io/andreas-evite/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0f766e">
+:root {
+  --candy-white: #ffffff;
+  --candy-red: #e11d48;
+  --candy-green: #0f766e;
+  --silver-1: #d9d9d9;
+  --silver-2: #f5f5f5;
+  --silver-3: #c0c0c0;
+  --ink: #1f2937;
+  --bg-overlay: rgba(255,255,255,.78);
+  --card-shadow: 0 10px 30px rgba(0,0,0,.18);
+  --radius: 22px;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <noscript>This invitation uses a tiny bit of JavaScript for the curtain effect. Please enable JavaScript to view it.</noscript>
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
 
-  <div id="snow"></div>
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background:
+    repeating-linear-gradient(45deg,
+      #fff 0 16px,
+      #fff 16px,
+      #fff 30px,
+      rgba(225,29,72,.06) 30px 46px,
+      rgba(225,29,72,.06) 46px 60px),
+    linear-gradient(#fff,#fff);
+  min-height: 100%;
+  overflow-x: hidden;
+}
 
-  <!-- Curtains -->
-  <div class="curtains" aria-hidden="true">
-    <div class="panel left"><div class="sheen"></div></div>
-    <div class="panel right"><div class="sheen"></div></div>
-    <button id="openBtn" aria-label="Open invitation" class="open-btn">Tap to Open</button>
-  </div>
+/* Front and Back Wrappers */
+.front-wrapper,
+.back-wrapper {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 32px;
+}
 
-  <!-- FRONT CARD -->
-  <main class="front-wrapper">
-    <section class="card front-card" role="region" aria-label="Invitation cover">
-      <div class="tree" aria-hidden="true">🎄</div>
-      <h1 class="script">Holiday Cheer is Almost Here!</h1>
+.card {
+  width: min(850px, 92vw);
+  background: var(--bg-overlay);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: clamp(20px, 4vw, 40px);
+  position: relative;
+  z-index: 1;
+}
 
-      <div class="details">
-        <p class="line strong">Friday, December 12, 2025</p>
-        <p class="line">12:30 PM – 3:30 PM</p>
-        <p class="line strong">Texas de Brazil</p>
-        <p class="line">101 N Houston St., Fort Worth, TX 76102</p>
-      </div>
+.front-card .tree {
+  font-size: clamp(64px, 12vw, 120px);
+  text-align: center;
+  margin-bottom: .4rem;
+}
 
-      <div class="cta">
-        <p class="hint">Click or tap to open the silver curtains ✨</p>
-      </div>
-    </section>
-  </main>
+.script {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(34px, 6.5vw, 64px);
+  text-align: center;
+  margin: 0 0 .35rem;
+  color: var(--candy-green);
+  text-shadow: 0 2px 0 rgba(255,255,255,.6);
+}
 
-  <!-- BACK CONTENT -->
-  <section class="back-wrapper" aria-live="polite">
-    <article class="card back-card" role="article" aria-label="Invitation poem and details">
-      <h2 class="script">Holiday Cheer is Almost Here!</h2>
+.details {
+  text-align: center;
+  margin-top: .5rem;
+}
 
-      <div class="poem">
-        <p>’Tis the season—so merry and bright,</p>
-        <p>We’re decking the halls for an afternoon delight!</p>
+.details .line {
+  margin: .15rem 0;
+  font-size: clamp(16px, 2.4vw, 20px);
+}
 
-        <h3>White Elephant Gift Exchange</h3>
-        <p>Bring a fun surprise—nothing too thrifty,<br/>Keep it between $25 and $50!</p>
+.strong { font-weight: 700; }
 
-        <h3>Awards & Recognition</h3>
-        <p>We’ll celebrate teammates who’ve really shined,<br/>With well-earned praise and gifts combined!</p>
+.cta { margin-top: .75rem; text-align: center; }
 
-        <h3>Food, Fun & Festive Flair</h3>
-        <p>Eat, mingle, and toast with holiday fare,<br/>This mandatory party means everyone’s there!</p>
+.hint {
+  display: inline-block;
+  padding: .5rem .9rem;
+  border-radius: 999px;
+  background: rgba(15,118,110,.1);
+  border: 1px solid rgba(15,118,110,.25);
+  font-size: 14px;
+}
 
-        <hr />
+/* Back Card */
+.back-card h3 {
+  margin: 1.1rem 0 .35rem;
+  color: var(--candy-red);
+  font-size: clamp(18px, 2.4vw, 22px);
+}
 
-        <p class="strong">Friday, December 12, 2025 • 12:30 PM – 3:30 PM</p>
-        <p class="strong">Texas de Brazil • 101 N Houston St., Fort Worth, TX 76102</p>
+.poem p { margin: .3rem 0; }
+.poem .closing { margin-top: .8rem; font-weight: 600; }
 
-        <p class="closing">Come jingle, mingle & make spirits bright—<br/>Let’s eat, laugh, and celebrate right!</p>
-      </div>
+.actions {
+  display: flex;
+  gap: .6rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
 
-      <div class="actions">
-        <a class="btn" id="rsvpBtn" href="https://forms.gle/sT2nvjCYpWNkhK1H7" target="_blank" rel="noopener">RSVP</a>
-        <button class="btn" id="closeBtn" aria-label="Close poem and show front">Close</button>
-      </div>
-    </article>
-  </section>
+.btn {
+  appearance: none;
+  border: 0;
+  background: linear-gradient(180deg, var(--candy-green), #0b5f58);
+  color: #fff;
+  padding: .65rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+  cursor: pointer;
+  text-decoration: none;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.btn:hover { filter: brightness(1.05); }
+.btn:active { transform: translateY(1px); }
+
+/* Curtains */
+.curtains {
+  position: fixed;
+  inset: 0;
+  pointer-events: auto;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+
+.panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 52%;
+  background: linear-gradient(90deg, var(--silver-3), var(--silver-1), var(--silver-2), var(--silver-3));
+  background-size: 600% 100%;
+  box-shadow: inset 0 0 40px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+
+.panel .sheen {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 60% at 50% 50%,
+    rgba(255,255,255,.6) 0%,
+    rgba(255,255,255,.25) 40%,
+    rgba(255,255,255,0) 70%);
+  mix-blend-mode: overlay;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+  100% { transform: translateX(-10%); }
+}
+
+.panel.left { left: 0; transform: translateX(0); border-right: 1px solid rgba(0,0,0,.25); }
+.panel.right { right: 0; transform: translateX(0); border-left: 1px solid rgba(0,0,0,.25); }
+
+.open-btn {
+  position: relative;
+  z-index: 3;
+  border: 0;
+  border-radius: 999px;
+  padding: .75rem 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(180deg, var(--candy-red), #be123c);
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(190,18,60,.35);
+  cursor: pointer;
+}
+
+.open-btn:focus {
+  outline: 3px solid rgba(190,18,60,.35);
+  outline-offset: 4px;
+}
+
+/* ✅ FIX: allow clicks after opening */
+body.open .panel.left {
+  transform: translateX(-100%);
+  transition: transform .9s cubic-bezier(.65,0,.35,1);
+}
+body.open .panel.right {
+  transform: translateX(100%);
+  transition: transform .9s cubic-bezier(.65,0,.35,1);
+}
+body.open .open-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease .5s;
+}
+body.open .curtains {
+  pointer-events: none;
+}
+body.open .front-card {
+  opacity: 0;
+  filter: blur(3px);
+  transition: opacity .4s ease .2s, filter .4s ease .2s;
+}
+body.open .back-wrapper {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity .3s ease .7s;
+}
+
+/* Initially hide back until open */
+.back-wrapper {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+/* Snow */
+#snow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.snowflake {
+  position: absolute;
+  top: -2rem;
+  font-size: 12px;
+  opacity: .9;
+  animation-name: fall, sway;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall { to { transform: translateY(110vh); } }
+@keyframes sway {
+  0% { margin-left: 0; }
+  50% { margin-left: 18px; }
+  100% { margin-left: 0; }
+}
+
+@media (max-width: 520px) {
+  .btn { font-size: 14px; }
+  .details .line { font-size: 15px; }
+}
