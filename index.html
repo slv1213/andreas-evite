@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Holiday Cheer is Almost Here! ✨</title>
+
+  <!-- SEO / Share Preview -->
+  <meta name="description" content="Join us for food, fun, awards & a white elephant gift exchange — Friday, Dec 12, 2025 at Texas de Brazil. Tap to open!">
+  <meta property="og:title" content="Holiday Cheer is Almost Here! ✨">
+  <meta property="og:description" content="Food, fun, awards & a white elephant gift exchange — Dec 12, 2025 · 12:30–3:30 PM · Texas de Brazil">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://slv1213.github.io/andreas-evite/">
+  <meta property="og:image" content="https://slv1213.github.io/andreas-evite/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0f766e">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <noscript>This invitation uses a tiny bit of JavaScript for the curtain effect. Please enable JavaScript to view it.</noscript>
+
+  <!-- Snow layer -->
+  <div id="snow" aria-hidden="true"></div>
+
+  <!-- Curtains (sit above content until opened) -->
+  <div class="curtains" aria-hidden="true">
+    <div class="panel left"><div class="sheen"></div></div>
+    <div class="panel right"><div class="sheen"></div></div>
+    <button id="openBtn" aria-label="Open invitation" class="open-btn">Tap to Open</button>
+  </div>
+
+  <!-- FRONT CARD -->
+  <main class="front-wrapper">
+    <section class="card front-card" role="region" aria-label="Invitation cover">
+      <div class="tree" aria-hidden="true">🎄</div>
+      <h1 class="script">Holiday Cheer is Almost Here!</h1>
+
+      <div class="details">
+        <p class="line strong">Friday, December 12, 2025</p>
+        <p class="line">12:30 PM – 3:30 PM</p>
+        <p class="line strong">Texas de Brazil</p>
+        <p class="line">101 N Houston St., Fort Worth, TX 76102</p>
+      </div>
+
+      <div class="cta">
+        <p class="hint">Click or tap to open the silver curtains ✨</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- BACK CONTENT -->
+  <section class="back-wrapper" aria-live="polite">
+    <article class="card back-card" role="article" aria-label="Invitation poem and details">
+      <h2 class="script">Holiday Cheer is Almost Here!</h2>
+
+      <div class="poem">
+        <p>’Tis the season—so merry and bright,</p>
+        <p>We’re decking the halls for an afternoon delight!</p>
+
+        <h3>White Elephant Gift Exchange</h3>
+        <p>Bring a fun surprise—nothing too thrifty,<br/>Keep it between $25 and $50!</p>
+
+        <h3>Awards & Recognition</h3>
+        <p>We’ll celebrate teammates who’ve really shined,<br/>With well-earned praise and gifts combined!</p>
+
+        <h3>Food, Fun & Festive Flair</h3>
+        <p>Eat, mingle, and toast with holiday fare,<br/>This mandatory party means everyone’s there!</p>
+
+        <hr />
+
+        <p class="strong">Friday, December 12, 2025 • 12:30 PM – 3:30 PM</p>
+        <p class="strong">Texas de Brazil • 101 N Houston St., Fort Worth, TX 76102</p>
+
+        <p class="closing">Come jingle, mingle & make spirits bright—<br/>Let’s eat, laugh, and celebrate right!</p>
+      </div>
+
+      <div class="actions">
+        <!-- RSVP opens in a new tab (mobile-friendly) -->
+        <a class="btn" id="rsvpBtn" href="https://forms.gle/sT2nvjCYpWNkhK1H7" target="_blank" rel="noopener">RSVP</a>
+        <button class="btn" id="closeBtn" aria-label="Close and show front">Close</button>
+      </div>
+    </article>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

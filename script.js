@@ -2,7 +2,8 @@
 (function makeSnow(){
   const snow = document.getElementById('snow');
   if (!snow) return;
-  const FLAKES = 70; // adjust for more/less snow
+
+  const FLAKES = 70; // adjust for vibe
   const GLYPHS = ['❄','✼','✻','✼','❅','❆'];
 
   for (let i = 0; i < FLAKES; i++){
@@ -13,7 +14,7 @@
     const size  = 10 + Math.random() * 16;  // px
     const left  = Math.random() * 100;      // vw
     const dur   = 9 + Math.random() * 10;   // s
-    const delay = Math.random() * -20;      // s (staggered start)
+    const delay = Math.random() * -20;      // s (stagger start)
 
     el.style.left = left + 'vw';
     el.style.fontSize = size + 'px';
@@ -24,18 +25,17 @@
   }
 })();
 
-// ====== Optional "whoosh" sound when opening ======
+// ====== Optional whoosh on open (click-triggered; safe for mobile) ======
 function playWhoosh(){
   try {
     const Ctx = window.AudioContext || window.webkitAudioContext;
     const ctx = new Ctx();
-    const bufferSize = ctx.sampleRate * 0.5; // 0.5s burst
+    const bufferSize = ctx.sampleRate * 0.5; // ~0.5s
     const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
     const data = buffer.getChannelData(0);
 
-    // white noise with quick fade-out envelope
     for (let i = 0; i < bufferSize; i++){
-      data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize);
+      data[i] = (Math.random() * 2 - 1) * (1 - i / bufferSize); // decay
     }
 
     const noise  = ctx.createBufferSource(); noise.buffer = buffer;
@@ -52,19 +52,19 @@ function playWhoosh(){
     gain.connect(ctx.destination);
     noise.start();
   } catch(e) {
-    // If audio is blocked (e.g., some iPhones), just skip sound.
+    // audio blocked? ignore gracefully
   }
 }
 
-// ====== Curtain open/close logic ======
+// ====== Curtain open/close ======
 const openBtn  = document.getElementById('openBtn');
 const closeBtn = document.getElementById('closeBtn');
 
 if (openBtn){
   openBtn.addEventListener('click', () => {
-    document.body.classList.add('open');       // triggers CSS to slide curtains
-    playWhoosh();                               // fun sound on open
-    // Move focus to first action on back for accessibility
+    document.body.classList.add('open'); // triggers CSS open state
+    playWhoosh();
+    // move focus into back card for accessibility
     setTimeout(() => {
       const firstBtn = document.querySelector('.back-card .btn');
       if (firstBtn) firstBtn.focus();
@@ -74,7 +74,7 @@ if (openBtn){
 
 if (closeBtn){
   closeBtn.addEventListener('click', () => {
-    document.body.classList.remove('open');    // brings the front card back
+    document.body.classList.remove('open'); // show front again
     setTimeout(() => {
       const opener = document.getElementById('openBtn');
       if (opener) opener.focus();
